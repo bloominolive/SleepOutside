@@ -1,3 +1,5 @@
+import { getParam } from "./utils.mjs"
+import productDetails from "./productDetails.mjs";
 import { setLocalStorage } from "./utils.mjs";
 import { getLocalStorage } from "./utils.mjs";
 import { findProductById } from "./productData.mjs";
@@ -56,3 +58,7 @@ cartItemCountUpdate();
 document
   .getElementById("addToCart")
   .addEventListener("click", addToCartHandler);
+
+const productId = getParam("product");
+productDetails(productId);
+
