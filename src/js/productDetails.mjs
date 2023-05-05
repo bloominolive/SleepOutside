@@ -1,5 +1,8 @@
 import { findProductById } from "./productData.mjs";
 import { setLocalStorage } from "./utils.mjs";
+import { getLocalStorage } from "./utils.mjs";
+import {animateCart} from "./cartImageAdjuster.js";
+import {cartItemCountUpdate} from "./cartImageAdjuster.js";
 
 let product = {};
 
@@ -13,6 +16,8 @@ function addToCart() {
     const cartItems = getLocalStorage("so-cart") || []; 
     cartItems.push(product); 
     setLocalStorage("so-cart", cartItems);
+    animateCart();
+    cartItemCountUpdate();
 }
 
 function renderProductDetails() {
