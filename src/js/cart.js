@@ -1,8 +1,8 @@
 import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart") || [];
-  if (cartItems.length === 0) {
+  const cartItems = getLocalStorage("so-cart") || []; // Used  the || operator to provide a default empty array in case cartItems is undefined
+  if (cartItems.length === 0) {     // To check  if cartItems is empty or undefined before calling the map method 
     return;
   }
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
