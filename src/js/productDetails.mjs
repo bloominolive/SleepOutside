@@ -7,7 +7,7 @@ import {cartItemCountUpdate} from "./cartImageAdjuster.js";
 
 export default async function productDetails(productId) {
     const product = await findProductById(productId);
-    renderProductDetails();
+    renderProductDetails(product);
     document.getElementById("addToCart").addEventListener("click",
      () => addToCart(product));
 }
@@ -20,7 +20,7 @@ function addToCart(product) {
     cartItemCountUpdate();
 }
 
-function renderProductDetails() {
+function renderProductDetails(product) {
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText =
       product.NameWithoutBrand;
