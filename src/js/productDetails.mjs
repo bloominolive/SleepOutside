@@ -4,15 +4,15 @@ import { getLocalStorage } from "./utils.mjs";
 import {animateCart} from "./cartImageAdjuster.js";
 import {cartItemCountUpdate} from "./cartImageAdjuster.js";
 
-let product = {};
 
 export default async function productDetails(productId) {
-    product = await findProductById(productId);
-    renderProductDetails();
-    document.getElementById("addToCart").addEventListener("click", addToCart);
+    const product = await findProductById(productId);
+    renderProductDetails(product);
+    document.getElementById("addToCart").addEventListener("click",
+     () => addToCart(product));
 }
 
-function addToCart() {
+function addToCart(product) {
     const cartItems = getLocalStorage("so-cart") || []; 
     cartItems.push(product); 
     setLocalStorage("so-cart", cartItems);
@@ -20,7 +20,7 @@ function addToCart() {
     cartItemCountUpdate();
 }
 
-function renderProductDetails() {
+function renderProductDetails(product) {
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText =
       product.NameWithoutBrand;
