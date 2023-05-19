@@ -41,7 +41,3 @@ function getTotalItemsInCart(){
   const count = cartItems == null ? 0 : cartItems.length;
   return count;
 }
-
-
-
-
