@@ -8,7 +8,7 @@ export function animateCart(){
   }, { once: true });
 }
 
-export async function cartItemCountUpdate() {
+export function cartItemCountUpdate() {
   const cartElement = document.querySelector('.cart');
   if (cartElement) {
     const count = getTotalItemsInCart();
@@ -41,7 +41,3 @@ function getTotalItemsInCart(){
   const count = cartItems == null ? 0 : cartItems.length;
   return count;
 }
-
-
-
-
