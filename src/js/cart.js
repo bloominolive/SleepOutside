@@ -1,4 +1,6 @@
 import { getLocalStorage } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+import { cartItemCountUpdate } from "./cartImageAdjuster.js";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -26,3 +28,5 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+await loadHeaderFooter();
+cartItemCountUpdate();

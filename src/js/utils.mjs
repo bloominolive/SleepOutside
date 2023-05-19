@@ -42,7 +42,7 @@ export function renderListWithTemplate(
   parentElement.insertAdjacentHTML(position, htmlString.join(""));
 }
 
-export function renderWithTemplate(
+export async function renderWithTemplate(
   templateFn,
   parentElement,
   data,
@@ -61,8 +61,6 @@ export function renderWithTemplate(
 }
 
 function loadTemplate(path) {
-  // wait what?  we are returning a new function? 
-  // this is called currying and can be very helpful.
   return async function () {
       const res = await fetch(path);
       if (res.ok) {
@@ -75,8 +73,8 @@ function loadTemplate(path) {
 export async function loadHeaderFooter() {
   const headerTemplateFn = loadTemplate("/partials/header.html");
   const footerTemplateFn = loadTemplate("/partials/footer.html");
-  const headerEl = document.querySelector("#main-header");
-  const footerEl = document.querySelector("#main-footer");
+  const headerEl = document.getElementById("main-header");
+  const footerEl = document.getElementById("main-footer");
   renderWithTemplate(headerTemplateFn, headerEl);
   renderWithTemplate(footerTemplateFn, footerEl);
 }
