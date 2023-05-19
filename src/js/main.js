@@ -1,3 +1,9 @@
 import productList from "./productList.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+import { cartItemCountUpdate } from "./cartImageAdjuster.js";
 
-productList(".product-list", "tents");
+
+  loadHeaderFooter();
+  productList(".product-list", "tents");
+  cartItemCountUpdate();
+

@@ -8,27 +8,32 @@ export function animateCart(){
   }, { once: true });
 }
 
-export function cartItemCountUpdate(){
-  const count = getTotalItemsInCart();
-  const existingCircle = document.querySelector('.number-circle');
-  if (existingCircle){
-    const itemCount = document.querySelector('.item-count');
-    itemCount.innerText = count;
+export function cartItemCountUpdate() {
+  const cartElement = document.querySelector('.cart');
+  if (cartElement) {
+    const count = getTotalItemsInCart();
+    const existingCircle = document.querySelector('.number-circle');
+
+    if (existingCircle) {
+      const itemCount = document.querySelector('.item-count');
+      itemCount.innerText = count;
+    } else {
+      const cart = document.querySelector('.cart');
+      const circleContainer = document.createElement('div');
+      circleContainer.classList.add('number-circle');
+
+      const circleNumber = document.createElement('span');
+      circleNumber.classList.add('item-count');
+      circleNumber.innerText = count;
+      circleContainer.appendChild(circleNumber);
+
+      cart.appendChild(circleContainer);
   }
-  else{
-    const cart = document.querySelector('.cart');
-
-    const circleContainer = document.createElement('div');
-    circleContainer.classList.add('number-circle');
-
-    const circleNumber = document.createElement('span');
-    circleNumber.classList.add('item-count');
-    circleNumber.innerText = count;
-    circleContainer.appendChild(circleNumber);
-
-    cart.appendChild(circleContainer);
+    return;
   }
-  
+
+  // Delay before checking again
+  setTimeout(cartItemCountUpdate, 1000); // Adjust the delay (in milliseconds) as needed
 }
 
 function getTotalItemsInCart(){
@@ -36,6 +41,3 @@ function getTotalItemsInCart(){
   const count = cartItems == null ? 0 : cartItems.length;
   return count;
 }
-cartItemCountUpdate();
-
-
