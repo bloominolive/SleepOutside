@@ -28,5 +28,5 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
-await loadHeaderFooter();
+loadHeaderFooter();
 cartItemCountUpdate();
