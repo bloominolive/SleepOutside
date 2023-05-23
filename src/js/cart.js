@@ -1,12 +1,11 @@
 import { getLocalStorage } from "./utils.mjs";
-import { loadHeaderFooter } from "./utils.mjs";
-import { cartItemCountUpdate } from "./cartImageAdjuster.js";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || []; // Used  the || operator to provide a default empty array in case cartItems is undefined
   if (cartItems.length === 0) {     // To check  if cartItems is empty or undefined before calling the map method 
     return;
   }
+  
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
@@ -28,5 +27,3 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
-loadHeaderFooter();
-cartItemCountUpdate();
