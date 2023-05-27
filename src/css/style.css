@@ -177,6 +177,25 @@ button {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
+.product-grid{
+  list-style: none;
+  display: flex;
+  
+}
+.product-grid h2{
+  font-size: 1rem;
+}
+.product-grid img{
+  width: 60%;
+}
+.product-grid a{
+  color: #525b0f;
+}
+.product-grid a:hover{
+  color: #f0a868;
+  font-style: italic;
+}
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
