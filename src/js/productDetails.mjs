@@ -20,7 +20,7 @@ function addToCart(product) {
     cartItemCountUpdate();
 }
 
-function renderProductDetails() {
+function renderProductDetails(product) {
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText =
       product.NameWithoutBrand;
