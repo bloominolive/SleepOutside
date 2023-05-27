@@ -5,5 +5,5 @@ import { cartItemCountUpdate } from "./cartImageAdjuster.js";
 
   loadHeaderFooter();
   const category = getParam("category");
-  productList(".product-list", "category");
+  productList(".product-list", category);
   cartItemCountUpdate();
