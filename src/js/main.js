@@ -3,7 +3,9 @@ import { loadHeaderFooter } from "./utils.mjs";
 import { cartItemCountUpdate } from "./cartImageAdjuster.js";
 
 
-  loadHeaderFooter();
-  productList(".product-list", "tents");
-  cartItemCountUpdate();
+var numberToDisplay = 4;
+loadHeaderFooter();
+
+productList(".product-list", "tents", numberToDisplay);
+cartItemCountUpdate();
 

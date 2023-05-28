@@ -1,12 +1,11 @@
 import { findProductById } from "./productData.mjs";
-import { setLocalStorage } from "./utils.mjs";
-import { getLocalStorage } from "./utils.mjs";
-import {animateCart} from "./cartImageAdjuster.js";
-import {cartItemCountUpdate} from "./cartImageAdjuster.js";
+import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import {animateCart, cartItemCountUpdate} from "./cartImageAdjuster.js";
 
 
 export default async function productDetails(productId) {
     const product = await findProductById(productId);
+    console.log(product);
     renderProductDetails(product);
     document.getElementById("addToCart").addEventListener("click",
      () => addToCart(product));
@@ -20,11 +19,11 @@ function addToCart(product) {
     cartItemCountUpdate();
 }
 
-function renderProductDetails() {
+function renderProductDetails(product) {
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText =
       product.NameWithoutBrand;
-    document.querySelector("#productImage").src = product.Image;
+    document.querySelector("#productImage").src = product.Images.PrimaryLarge;
     document.querySelector("#productImage").alt = product.Name;
     document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
     document.querySelector("#productColorName").innerText =
