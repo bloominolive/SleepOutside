@@ -47,6 +47,27 @@ header {
   text-decoration: none;
   color: var(--font-body);
 }
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-10px);
+  }
+  40% {
+    transform: translateX(10px);
+  }
+  60% {
+    transform: translateX(-10px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 .hero {
   position: relative;
 }
@@ -102,6 +123,29 @@ button {
   position: relative;
   text-align: center;
 }
+.animate {
+  animation-name: shake;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+.number-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  z-index: 9999;
+}
 
 .cart svg {
   width: 25px;
@@ -132,6 +176,25 @@ button {
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
+}
+
+.product-grid{
+  list-style: none;
+  display: flex;
+  
+}
+.product-grid h2{
+  font-size: 1rem;
+}
+.product-grid img{
+  width: 60%;
+}
+.product-grid a{
+  color: #525b0f;
+}
+.product-grid a:hover{
+  color: #f0a868;
+  font-style: italic;
 }
 /* Styles for product lists */
 .product-card {
