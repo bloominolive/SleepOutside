@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import { getLocalStorage } from "./utils.mjs";
-=======
 import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 import { cartItemCountUpdate } from "./cartImageAdjuster.js";
->>>>>>> origin/main
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || []; // Used  the || operator to provide a default empty array in case cartItems is undefined
@@ -32,3 +28,5 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+loadHeaderFooter();
+cartItemCountUpdate();
