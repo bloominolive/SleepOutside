@@ -75,6 +75,18 @@ export async function loadHeaderFooter() {
   const footerTemplateFn = loadTemplate("/partials/footer.html");
   const headerEl = document.getElementById("main-header");
   const footerEl = document.getElementById("main-footer");
-  renderWithTemplate(headerTemplateFn, headerEl);
+
+   // add the count of items in the cart to the backpack icon
+  function setCartSuperscript(){
+  document.getElementById('item-count').textContent = getCartItemCount();}
+
+  renderWithTemplate(headerTemplateFn, headerEl, setCartSuperscript);
   renderWithTemplate(footerTemplateFn, footerEl);
+  
+}
+
+export function getCartItemCount(){
+  const cartItems = getLocalStorage('so-cart')
+  if (cartItems===null) return 0
+  return cartItems.length
 }

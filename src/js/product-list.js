@@ -3,7 +3,8 @@ import { getParam, loadHeaderFooter } from "./utils.mjs";
 import { cartItemCountUpdate } from "./cartImageAdjuster.js";
 
 
-  loadHeaderFooter();
-  const category = getParam("category");
-  productList(".product-list", category);
-  cartItemCountUpdate();
+let category = getParam('category') ?? 'tents';
+
+document.querySelector('.page-title').textContent = `Top Products: ${category}`;
+productList(category, '.product-list');
+cartItemCountUpdate();
