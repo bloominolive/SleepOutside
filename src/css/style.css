@@ -265,6 +265,45 @@ button {
   grid-column: 3;
 }
 
+#newsletter{
+  margin: 1rem;
+  padding-bottom: 1rem;
+  border: #f0a868 solid 2px;
+  text-align: center;
+  box-shadow: 0 3px 9px rgba(240, 168, 104, 0.6);}
+
+#newsletter form input{
+  margin-right: .5rem;
+}
+.signup-heading {
+  font-style: italic;
+  font-weight: bold;
+
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  z-index: 9999;
+}
+.popup p{
+  font-weight: bold;
+  font-style: italic;
+}
+.close-button {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 8%;
+}
+
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
