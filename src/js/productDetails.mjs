@@ -1,4 +1,4 @@
-import { findProductById } from "./productData.mjs";
+import { findProductById } from "./externalServices.mjs";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 import {animateCart, cartItemCountUpdate} from "./cartImageAdjuster.js";
 
@@ -12,12 +12,23 @@ export default async function productDetails(productId) {
 }
 
 function addToCart(product) {
-    const cartItems = getLocalStorage("so-cart") || []; 
-    cartItems.push(product); 
-    setLocalStorage("so-cart", cartItems);
-    animateCart();
-    cartItemCountUpdate();
+  product.Quantity = 1;
+  const cartItems = getLocalStorage("so-cart") || [];
+  const existingProduct = cartItems.find(item => item.Id === product.Id);
+
+  if (existingProduct) {
+    product.Quantity += existingProduct.Quantity;
+    cartItems.splice(cartItems.findIndex(item => item.Id === product.Id), 1);
+  } 
+
+  cartItems.push(product);
+
+  setLocalStorage("so-cart", cartItems);
+  animateCart();
+  cartItemCountUpdate();
 }
+
+
 
 function renderProductDetails(product) {
     document.querySelector("#productName").innerText = product.Brand.Name;

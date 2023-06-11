@@ -36,7 +36,7 @@ export function cartItemCountUpdate() {
   setTimeout(cartItemCountUpdate, 1000); // Adjust the delay (in milliseconds) as needed
 }
 
-function getTotalItemsInCart(){
+export function getTotalItemsInCart(){
   const cartItems = getLocalStorage("so-cart");
   const count = cartItems == null ? 0 : cartItems.length;
   return count;

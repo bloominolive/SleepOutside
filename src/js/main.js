@@ -1,5 +1,5 @@
 import productList from "./productList.mjs";
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter,initializeNewsletter } from "./utils.mjs";
 import { cartItemCountUpdate } from "./cartImageAdjuster.js";
 
 
@@ -8,4 +8,5 @@ loadHeaderFooter();
 
 productList(".product-list", "tents", numberToDisplay);
 cartItemCountUpdate();
+initializeNewsletter()
 
