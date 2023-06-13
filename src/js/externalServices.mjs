@@ -4,7 +4,7 @@ function convertToJson(res) {
   if (res.ok) {
     return res.json();
   } else {
-    throw new Error("Bad Response");
+    throw { name: 'servicesError', message: jsonResponse };
   }
 }
 
@@ -28,6 +28,9 @@ export async function checkout(order) {
     },
     body: JSON.stringify(order),
   };
-  const response= await fetch(`$(baseURL)checkout`, options);
-  return convertToJson(response);
+  return await fetch(baseURL + "/checkout/", options).then(convertToJson);
 }
+
+
+
+

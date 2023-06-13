@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage} from "./utils.mjs";
 import { checkout } from "./externalServices.mjs";
 
 function formToOrder(form){
@@ -67,13 +67,25 @@ const checkoutProcess = {
     tax.innerText = "$" + this.tax;
     orderTotal.innerText = "$" + this.orderTotal;
   },
-  async checkout(form) {
-    const order  =formToOrder(form);
-    order.orderDate = new Date();
-    order.items = packageItems(this.list);
-
-    const response = await checkout(order);
-},
-}
+  checkout: async function (form) {
+    const json = formToOrder(form);
+    // add totals, and item details
+    json.orderDate = new Date();
+    json.orderTotal = this.orderTotal;
+    json.tax = this.tax;
+    json.shipping = this.shipping;
+    json.items = packageItems(this.list);
+    console.log(json);
+    try {
+      const res = await checkout(json);
+      console.log(res);
+      setLocalStorage("so-cart", []);
+      location.assign("/checkout/success.html");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  
+};
 
 export default checkoutProcess;
