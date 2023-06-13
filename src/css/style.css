@@ -275,17 +275,44 @@ button {
   font-weight: bold;
 }
 
-.minus-button, .plus-button{
-  padding: .2rem 1rem;
-  margin-right: 1rem;
-  margin-left: 1rem;
+.checkout-form{
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
+
+.checkout-form fieldset{
+  margin-bottom: 1.6rem;
+}
+
+.checkout-field input{
+  width: 60%; 
+}
+.checkout-field label {
+  display: block;
+  margin-bottom: .3rem;
+}
+
+.checkout-field input {
+  display: block;
+  margin-bottom: 1rem;
+}
+
 
 #checkout-button a {
   color: white;
 }
 
 #checkout-button a:hover{
+  font-style: italic;
+}
+
+#checkoutSubmit {
+  color: white;
+  text-decoration: underline;
+  margin-bottom: 2rem;
+}
+
+#checkoutSubmit:hover{
   font-style: italic;
 }
 

@@ -37,16 +37,12 @@ const checkoutProcess = {
   },
 
   calculateItemSummary: function () {
-    const summaryElement = document.querySelector(
-      this.outputSelector + " #cartTotal"
-    );
-    const itemNumElement = document.querySelector(
-      this.outputSelector + " #num-items"
-    );
-    itemNumElement.innerHTML= this.list.length;
-    const amounts = this.list.map((item) => item.FinalPrice);
-    this.itemTotal = amounts.reduce((sum, item) => sum + item);
-    summaryElement.innerText = "$" + this.itemTotal;
+    const summaryElement = document.querySelector(this.outputSelector + " #cartTotal");
+    const itemNumElement = document.querySelector(this.outputSelector + " #num-items");
+    itemNumElement.innerHTML = this.list.reduce((sum, item) => sum + item.Quantity, 0);
+    const amounts = this.list.map((item) => item.FinalPrice * item.Quantity);
+    this.itemTotal = amounts.reduce((sum, item) => sum + item, 0);
+    summaryElement.innerText = "$" + this.itemTotal;    
     this.calculateOrdertotal();
   },
   
