@@ -11,7 +11,7 @@ export default async function productDetails(productId) {
      () => addToCart(product));
 }
 
-function addToCart(product) {
+export function addToCart(product) {
   product.Quantity = 1;
   const cartItems = getLocalStorage("so-cart") || [];
   const existingProduct = cartItems.find(item => item.Id === product.Id);

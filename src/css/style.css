@@ -22,6 +22,7 @@ body {
   font-size: var(--font-base);
   color: var(--dark-grey);
 }
+
 img {
   max-width: 100%;
 }
@@ -232,9 +233,9 @@ button {
 /* Start cart list card styles */
 .cart-card {
   display: grid;
-  grid-template-columns: 25% auto 15%;
+  margin-left: auto;
+  margin-right: auto;
   font-size: var(--small-font);
-  /* max-height: 120px; */
   align-items: center;
 }
 
@@ -248,6 +249,7 @@ button {
 .cart-card .card__name {
   grid-row: 1;
   grid-column: 2;
+  margin-left: 1rem;
 }
 
 .cart-card__color {
@@ -255,14 +257,36 @@ button {
   grid-column: 2;
 }
 
-.cart-card__quantity {
-  grid-row: 1;
-  grid-column: 3;
-}
-
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;
+}
+
+.quantity-element{
+  grid-row: 1;
+  grid-column: 3;
+  display: flex;  
+  margin-right: 1rem;
+  margin-left: 1rem;
+  text-align: center;
+}
+
+.quantity-display{
+  font-weight: bold;
+}
+
+.minus-button, .plus-button{
+  padding: .2rem 1rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+#checkout-button a {
+  color: white;
+}
+
+#checkout-button a:hover{
+  font-style: italic;
 }
 
 #newsletter{
@@ -318,7 +342,15 @@ button {
   }
 }
 
+
+
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+@media screen and (max-width: 900px){
+  .quantity-element{
+    flex-direction: column;
+  }
 }
