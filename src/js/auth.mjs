@@ -40,7 +40,7 @@ export function checkLogin(){
     const token = getLocalStorage(tokenKey);
     const valid = isTokenValid(token);
     if (!valid){
-        localStorage.remoteItem(tokenKey);
+        localStorage.removeItem(tokenKey);
         const location = window.location;
         console.log(location);
         window.location = `/login/index.html?redirect=${location.pathname}`;
