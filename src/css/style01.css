@@ -263,12 +263,6 @@ button {
   grid-column: 3;
 }
 
-<<<<<<< HEAD
-form input {
-  display: flex;
-  flex-direction: column;
-}
-=======
 .quantity-element{
   grid-row: 1;
   grid-column: 3;
@@ -362,7 +356,6 @@ form input {
 }
 
 
->>>>>>> origin/main
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

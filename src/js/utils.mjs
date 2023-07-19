@@ -12,6 +12,7 @@ export function getLocalStorage(key) {
 // save data to local storage
 export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
+  //save token as so_token
 }
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
@@ -82,6 +83,7 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(headerTemplateFn, headerEl, setCartSuperscript);
   renderWithTemplate(footerTemplateFn, footerEl);
+<<<<<<< HEAD
   
 }
 
@@ -90,3 +92,80 @@ export function getCartItemCount(){
   if (cartItems===null) return 0
   return cartItems.length
 }
+=======
+}
+
+//newsletter
+
+export function initializeNewsletter() {
+  // Create the newsletter sign-up form
+  var newsletterDiv = document.getElementById("newsletter");
+
+  var newslettersignup = document.createElement("p");
+  newslettersignup.textContent = "Sign up for our newsletter!";
+  newslettersignup.classList.add("signup-heading");
+  var form = document.createElement("form");
+  form.id = "newsletterForm";
+
+  var emailInput = document.createElement("input");
+  emailInput.type = "email";
+  emailInput.id = "emailInput";
+  emailInput.placeholder = "Enter your email address";
+  emailInput.required = true;
+
+  var submitButton = document.createElement("input");
+  submitButton.type = "submit";
+  submitButton.value = "Subscribe";
+
+  form.appendChild(emailInput);
+  form.appendChild(submitButton);
+
+  newsletterDiv.appendChild(newslettersignup);
+  newsletterDiv.appendChild(form);
+
+  // Create the popup message
+  var popupDiv = document.getElementById("popup");
+
+  var closeButton = document.createElement("button");
+  closeButton.textContent = "OK";
+  closeButton.classList.add("close-button");
+
+  var thanksMessage = document.createElement("p");
+  thanksMessage.textContent = "Thanks for subscribing!";
+  
+  popupDiv.appendChild(thanksMessage);
+  popupDiv.appendChild(closeButton);
+  
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    popupDiv.style.display = "block";
+  });
+
+  closeButton.addEventListener("click", function() {
+    popupDiv.style.display = "none";
+  });
+}
+
+export function alertMessage(message, scroll = true, duration = 3000) {
+  const alert = document.createElement("div");
+  alert.classList.add("alert");
+  alert.innerHTML = `<p>${message}</p><span>X</span>`;
+
+  alert.addEventListener("click", function (e) {
+    if (e.target.tagName == "SPAN") {
+      main.removeChild(this);
+    }
+  });
+  const main = document.querySelector("main");
+  main.prepend(alert);
+  if (scroll) window.scrollTo(0, 0); 
+}
+
+export function removeAllAlerts() {
+  const alerts = document.querySelectorAll(".alert");
+  alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
+}
+
+>>>>>>> origin/main
